@@ -1,4 +1,8 @@
+ignoredBuiltDependencies:
+  - cypress
+
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - esbuild
   - lmdb
   - msgpackr-extract

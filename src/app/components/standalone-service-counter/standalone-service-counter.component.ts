@@ -7,10 +7,10 @@ import { CounterState } from '../../reducers/counter.reducer';
 import { CounterService } from '../../services/counter.service';
 
 @Component({
-  standalone: true,
   selector: 'app-standalone-service-counter',
   imports: [CommonModule],
   templateUrl: './standalone-service-counter.component.html',
+  standalone: true,
   styleUrls: ['./standalone-service-counter.component.css'],
 })
 export class StandaloneServiceCounterComponent {

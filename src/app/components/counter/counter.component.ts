@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-counter',
-  templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.css'],
+    selector: 'app-counter',
+    templateUrl: './counter.component.html',
+    styleUrls: ['./counter.component.css'],
+    standalone: false
 })
 export class CounterComponent implements OnChanges {
   @Input()

@@ -6,8 +6,9 @@ import { CounterComponent } from '../counter/counter.component';
 import { HomeComponent } from './home.component';
 
 @Component({
-  selector: 'app-counter',
-  template: '',
+    selector: 'app-counter',
+    template: '',
+    standalone: false
 })
 class FakeCounterComponent implements Partial<CounterComponent> {
   @Input()
