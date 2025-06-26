@@ -33,14 +33,14 @@ importers:
         specifier: ^16.2.12
         version: 16.2.12(@angular/common@16.2.12(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(@angular/platform-browser@16.2.12(@angular/animations@16.2.12(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10)))(@angular/common@16.2.12(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10)))(rxjs@7.8.2)
       '@ngrx/effects':
-        specifier: ^15.2.1
-        version: 15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(@ngrx/store@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)
+        specifier: ^16.3.0
+        version: 16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(@ngrx/store@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)
       '@ngrx/store':
-        specifier: ^15.2.1
-        version: 15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
+        specifier: ^16.3.0
+        version: 16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
       '@ngrx/store-devtools':
-        specifier: ^15.2.1
-        version: 15.4.0(@ngrx/store@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)
+        specifier: ^16.3.0
+        version: 16.3.0(@ngrx/store@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -1092,23 +1092,23 @@ packages:
       '@angular/common': '>= 15.1.0'
       '@angular/router': '>= 15.1.0'
 
-  '@ngrx/effects@15.4.0':
-    resolution: {integrity: sha512-/8gHhOM9aeGaw8OG2LLwi4I4p84xzG0EU9TqWrvQcW74wn8sFZONjLvUte5YOzJ5502PPFFrfXSOc+lHnVAJUA==}
+  '@ngrx/effects@16.3.0':
+    resolution: {integrity: sha512-QvN+jJFqBHH6x5eqtFVeMTcotoWMLTrDjK4wW61hmbYafGmBbEnIgikTsn2DSPA67io0DhgDtBHoBKnicy1gEw==}
     peerDependencies:
-      '@angular/core': ^15.0.0
-      '@ngrx/store': 15.4.0
+      '@angular/core': ^16.0.0
+      '@ngrx/store': 16.3.0
       rxjs: ^6.5.3 || ^7.5.0
 
-  '@ngrx/store-devtools@15.4.0':
-    resolution: {integrity: sha512-AqWRprSyS3u/vZlpsBOPMW1/0TZS2LE13/KpZedEY+RMCW+mi53esqgrdNGOB3Wr4vrI82Ar9fgaIm4TQO6LPg==}
+  '@ngrx/store-devtools@16.3.0':
+    resolution: {integrity: sha512-Ou/aXxJmd9UgYliL09hmnlLdk35dJ8S56rJCHgeJlMPb8j0LDR7Olfpsa7Asi63Zvtg2MYZn1p1G0Tsb+0rk/Q==}
     peerDependencies:
-      '@ngrx/store': 15.4.0
+      '@ngrx/store': 16.3.0
       rxjs: ^6.5.3 || ^7.5.0
 
-  '@ngrx/store@15.4.0':
-    resolution: {integrity: sha512-OvCuNBHL8mAUnRTS6QSFm+IunspsYNu2cCwDovBNn7EGhxRuGihBeNoX47jCqWPHBFtokj4BlatDfpJ/yCh4xQ==}
+  '@ngrx/store@16.3.0':
+    resolution: {integrity: sha512-aWQY41M7O0sMpTmM+OOPBPwKQWHhmkCStizFB1GdiGud8DU5fz0BdUiy6o2+feZypMzczqbwTnq+AxxxrWYqoA==}
     peerDependencies:
-      '@angular/core': ^15.0.0
+      '@angular/core': ^16.0.0
       rxjs: ^6.5.3 || ^7.5.0
 
   '@ngtools/webpack@16.2.16':
@@ -6139,20 +6139,20 @@ snapshots:
       replace-in-file: 6.2.0
       tslib: 2.8.1
 
-  '@ngrx/effects@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(@ngrx/store@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@ngrx/effects@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(@ngrx/store@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
       '@angular/core': 16.2.12(rxjs@7.8.2)(zone.js@0.14.10)
-      '@ngrx/store': 15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
+      '@ngrx/store': 16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@ngrx/store-devtools@15.4.0(@ngrx/store@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)':
+  '@ngrx/store-devtools@16.3.0(@ngrx/store@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
-      '@ngrx/store': 15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
+      '@ngrx/store': 16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@ngrx/store@15.4.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)':
+  '@ngrx/store@16.3.0(@angular/core@16.2.12(rxjs@7.8.2)(zone.js@0.14.10))(rxjs@7.8.2)':
     dependencies:
       '@angular/core': 16.2.12(rxjs@7.8.2)(zone.js@0.14.10)
       rxjs: 7.8.2
