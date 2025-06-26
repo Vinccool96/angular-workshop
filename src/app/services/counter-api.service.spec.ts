@@ -1,8 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpErrorResponse, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { CounterApiService } from './counter-api.service';
@@ -19,9 +16,9 @@ describe('CounterApiService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [CounterApiService],
-    });
+    imports: [],
+    providers: [CounterApiService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
     counterApiService = TestBed.inject(CounterApiService);
     httpMock = TestBed.inject(HttpTestingController);

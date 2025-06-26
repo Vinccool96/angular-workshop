@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -26,39 +26,28 @@ import { reducers } from './reducers';
 import { CounterApiService } from './services/counter-api.service';
 import { CounterService } from './services/counter.service';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CounterComponent,
-    ServiceCounterComponent,
-    NgRxCounterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-
-    AppRoutingModule,
-    StandaloneServiceCounterComponent,
-
-    // NgRx Store
-    StoreModule.forRoot(reducers, {
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-      },
-    }),
-
-    // NgRx Effects
-    EffectsModule.forRoot([CounterEffects]),
-
-    // NgRx Store Dev Tools
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last n states
-      logOnly: environment.production,
-    }),
-  ],
-  providers: [CounterService, CounterApiService],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        CounterComponent,
+        ServiceCounterComponent,
+        NgRxCounterComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        StandaloneServiceCounterComponent,
+        // NgRx Store
+        StoreModule.forRoot(reducers, {
+            runtimeChecks: {
+                strictStateImmutability: true,
+                strictActionImmutability: true,
+            },
+        }),
+        // NgRx Effects
+        EffectsModule.forRoot([CounterEffects]),
+        // NgRx Store Dev Tools
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last n states
+            logOnly: environment.production,
+        })], providers: [CounterService, CounterApiService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
