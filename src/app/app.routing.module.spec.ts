@@ -8,8 +8,7 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule, Router } from '@angular/router';
 
 import { provideMockStore } from '@ngrx/store/testing';
 
@@ -53,7 +52,7 @@ describe('AppRoutingModule: routes', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterModule.forRoot(routes)],
       declarations: [AppComponent],
       providers: [CounterService, provideMockStore({ initialState: { counter: 5 } })],
     }).compileComponents();
