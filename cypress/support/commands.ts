@@ -52,9 +52,7 @@ declare namespace Cypress {
      */
     byTestId<E extends Node = HTMLElement>(
       id: string,
-      options?: Partial<
-        Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable & Cypress.Shadow
-      >,
+      options?: Partial<Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable & Cypress.Shadow>,
     ): Cypress.Chainable<JQuery<E>>;
   }
 }
@@ -64,8 +62,6 @@ Cypress.Commands.add(
   // Borrow the signature from cy.get
   <E extends Node = HTMLElement>(
     id: string,
-    options?: Partial<
-      Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable & Cypress.Shadow
-    >,
+    options?: Partial<Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable & Cypress.Shadow>,
   ): Cypress.Chainable<JQuery<E>> => cy.get(`[data-testid="${id}"]`, options),
 );

@@ -16,9 +16,9 @@ describe('CounterApiService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [],
-    providers: [CounterApiService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-});
+      imports: [],
+      providers: [CounterApiService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+    });
 
     counterApiService = TestBed.inject(CounterApiService);
     httpMock = TestBed.inject(HttpTestingController);

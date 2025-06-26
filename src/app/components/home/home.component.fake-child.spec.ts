@@ -6,9 +6,9 @@ import { CounterComponent } from '../counter/counter.component';
 import { HomeComponent } from './home.component';
 
 @Component({
-    selector: 'app-counter',
-    template: '',
-    standalone: false
+  selector: 'app-counter',
+  template: '',
+  standalone: false,
 })
 class FakeCounterComponent implements Partial<CounterComponent> {
   @Input()
@@ -49,9 +49,6 @@ describe('HomeComponent (faking a child Component)', () => {
     spyOn(console, 'log');
     const count = 5;
     counter.countChange.emit(count);
-    expect(console.log).toHaveBeenCalledWith(
-      'countChange event from CounterComponent',
-      count,
-    );
+    expect(console.log).toHaveBeenCalledWith('countChange event from CounterComponent', count);
   });
 });

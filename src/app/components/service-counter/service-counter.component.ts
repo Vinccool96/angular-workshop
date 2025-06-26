@@ -5,10 +5,10 @@ import { CounterState } from '../../reducers/counter.reducer';
 import { CounterService } from '../../services/counter.service';
 
 @Component({
-    selector: 'app-service-counter',
-    templateUrl: './service-counter.component.html',
-    styleUrls: ['./service-counter.component.css'],
-    standalone: false
+  selector: 'app-service-counter',
+  templateUrl: './service-counter.component.html',
+  styleUrls: ['./service-counter.component.css'],
+  standalone: false,
 })
 export class ServiceCounterComponent {
   public count$: Observable<CounterState>;

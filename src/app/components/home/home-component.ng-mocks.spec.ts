@@ -37,9 +37,6 @@ describe('HomeComponent with ng-mocks', () => {
     spyOn(console, 'log');
     const count = 5;
     counter.countChange.emit(count);
-    expect(console.log).toHaveBeenCalledWith(
-      'countChange event from CounterComponent',
-      count,
-    );
+    expect(console.log).toHaveBeenCalledWith('countChange event from CounterComponent', count);
   });
 });

@@ -13,9 +13,6 @@ const reducer = createReducer(
   on(reset, (_, action) => action.count),
 );
 
-export function counterReducer(
-  state: CounterState | undefined,
-  action: Action,
-): CounterState {
+export function counterReducer(state: CounterState | undefined, action: Action): CounterState {
   return reducer(state, action);
 }

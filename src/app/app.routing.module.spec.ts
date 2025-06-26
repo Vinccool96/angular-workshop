@@ -1,30 +1,17 @@
-import {
-  APP_BASE_HREF,
-  Location,
-} from '@angular/common';
+import { APP_BASE_HREF, Location } from '@angular/common';
 import { Type } from '@angular/core';
-import {
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterModule, Router } from '@angular/router';
 
 import { provideMockStore } from '@ngrx/store/testing';
 
 import { AppComponent } from './app.component';
-import {
-  AppRoutingModule,
-  routes,
-} from './app.routing.module';
+import { AppRoutingModule, routes } from './app.routing.module';
 import { CounterComponent } from './components/counter/counter.component';
 import { HomeComponent } from './components/home/home.component';
-import {
-  NgRxCounterComponent,
-} from './components/ngrx-counter/ngrx-counter.component';
-import {
-  ServiceCounterComponent,
-} from './components/service-counter/service-counter.component';
+import { NgRxCounterComponent } from './components/ngrx-counter/ngrx-counter.component';
+import { ServiceCounterComponent } from './components/service-counter/service-counter.component';
 import { CounterService } from './services/counter.service';
 
 describe('AppRoutingModule', () => {

@@ -1,10 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  byTestId,
-  createComponentFactory,
-  mockProvider,
-  Spectator,
-} from '@ngneat/spectator';
+import { byTestId, createComponentFactory, mockProvider, Spectator } from '@ngneat/spectator';
 import { of } from 'rxjs';
 
 import { CounterService } from '../../services/counter.service';

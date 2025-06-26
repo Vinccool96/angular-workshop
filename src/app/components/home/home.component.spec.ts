@@ -39,10 +39,7 @@ describe('HomeComponent', () => {
       const el = findComponent(fixture, 'app-counter');
       const count = 5;
       el.triggerEventHandler('countChange', 5);
-      expect(console.log).toHaveBeenCalledWith(
-        'countChange event from CounterComponent',
-        count,
-      );
+      expect(console.log).toHaveBeenCalledWith('countChange event from CounterComponent', count);
     });
   });
 

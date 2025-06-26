@@ -8,11 +8,11 @@ import { AppState } from '../../shared/app-state';
 import { selectCounter } from '../../shared/selectors';
 
 @Component({
-    selector: 'app-ngrx-counter',
-    templateUrl: './ngrx-counter.component.html',
-    styleUrls: ['./ngrx-counter.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-ngrx-counter',
+  templateUrl: './ngrx-counter.component.html',
+  styleUrls: ['./ngrx-counter.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NgRxCounterComponent {
   public count$: Observable<CounterState>;

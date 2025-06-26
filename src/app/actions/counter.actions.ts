@@ -10,9 +10,5 @@ export const saveSuccess = createAction('[counter] Save success');
 export const saveError = createAction('[counter] Save error', props<{ error: Error }>());
 
 export type CounterActions = ReturnType<
-  | typeof increment
-  | typeof decrement
-  | typeof reset
-  | typeof saveSuccess
-  | typeof saveError
+  typeof increment | typeof decrement | typeof reset | typeof saveSuccess | typeof saveError
 >;

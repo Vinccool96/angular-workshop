@@ -5,13 +5,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { from, Observable, of, throwError } from 'rxjs';
 import { toArray } from 'rxjs/operators';
 
-import {
-  decrement,
-  increment,
-  reset,
-  saveError,
-  saveSuccess,
-} from '../actions/counter.actions';
+import { decrement, increment, reset, saveError, saveSuccess } from '../actions/counter.actions';
 import { CounterApiService } from '../services/counter-api.service';
 import { AppState } from '../shared/app-state';
 import { CounterEffects } from './counter.effects';

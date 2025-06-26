@@ -4,13 +4,7 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 
-import {
-  decrement,
-  increment,
-  reset,
-  saveError,
-  saveSuccess,
-} from '../actions/counter.actions';
+import { decrement, increment, reset, saveError, saveSuccess } from '../actions/counter.actions';
 import { CounterApiService } from '../services/counter-api.service';
 import { AppState } from '../shared/app-state';
 
