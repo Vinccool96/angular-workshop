@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class CounterApiService {
   constructor(private http: HttpClient) {}
 
-  public saveCounter(counter: number): Observable<{}> {
+  public saveCounter(counter: number): Observable<object> {
     return this.http.get(`/assets/counter.json?counter=${counter}`);
   }
 }

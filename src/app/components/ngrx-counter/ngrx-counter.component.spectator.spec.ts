@@ -25,7 +25,7 @@ describe('NgRxCounterComponent with spectator', () => {
   });
 
   beforeEach(() => {
-    store = TestBed.inject(Store);
+    store = TestBed.inject(Store) as Store<AppState>;
     spyOn(store, 'dispatch');
 
     spectator = createComponent();

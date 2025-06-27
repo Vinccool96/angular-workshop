@@ -23,9 +23,14 @@ const errorAction = saveError({ error: apiError });
 
 function expectActions(effect: Observable<Action>, actions: Action[]): void {
   let actualActions: Action[] | undefined;
-  effect.pipe(toArray()).subscribe((actualActions2) => {
-    actualActions = actualActions2;
-  }, fail);
+  effect.pipe(toArray()).subscribe({
+    next(actualActions2) {
+      actualActions = actualActions2;
+    },
+    error(error) {
+      fail(error);
+    },
+  });
   expect(actualActions).toEqual(actions);
 }
 
@@ -34,14 +39,14 @@ function expectActions(effect: Observable<Action>, actions: Action[]): void {
 type PartialCounterApiService = Pick<CounterApiService, keyof CounterApiService>;
 
 const mockCounterApi: PartialCounterApiService = {
-  saveCounter(): Observable<{}> {
+  saveCounter(): Observable<object> {
     return of({});
   },
 };
 
 const mockCounterApiError: PartialCounterApiService = {
   saveCounter(): Observable<never> {
-    return throwError(apiError);
+    return throwError(() => apiError);
   },
 };
 

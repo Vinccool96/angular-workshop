@@ -13,7 +13,7 @@ class TodoService {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
     }
-    return await response.json();
+    return (await response.json()) as string[];
   }
 }
 

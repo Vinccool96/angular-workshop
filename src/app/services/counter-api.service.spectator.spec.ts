@@ -7,7 +7,7 @@ const counter = 5;
 const expectedURL = `/assets/counter.json?counter=${counter}`;
 const serverResponse = {};
 
-const errorEvent = new ErrorEvent('API error');
+const errorEvent = new ProgressEvent('API error');
 
 describe('CounterApiService with spectator', () => {
   let spectator: SpectatorHttp<CounterApiService>;
@@ -18,7 +18,7 @@ describe('CounterApiService with spectator', () => {
   });
 
   it('saves the counter', () => {
-    let actualResult: any;
+    let actualResult: object | undefined;
     spectator.service.saveCounter(counter).subscribe((result) => {
       actualResult = result;
     });
@@ -35,13 +35,17 @@ describe('CounterApiService with spectator', () => {
 
     let actualError: HttpErrorResponse | undefined;
 
-    spectator.service.saveCounter(counter).subscribe(
-      fail,
-      (error: HttpErrorResponse) => {
+    spectator.service.saveCounter(counter).subscribe({
+      next() {
+        fail();
+      },
+      error(error: HttpErrorResponse) {
         actualError = error;
       },
-      fail,
-    );
+      complete() {
+        fail();
+      },
+    });
 
     const request = spectator.expectOne(expectedURL, HttpMethod.GET);
     request.error(errorEvent, { status, statusText });

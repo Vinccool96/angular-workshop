@@ -21,6 +21,10 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('contains a router outlet', () => {
     const el = findComponent(fixture, 'router-outlet');
     expect(el).toBeTruthy();

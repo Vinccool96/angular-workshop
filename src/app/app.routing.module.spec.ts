@@ -33,7 +33,7 @@ describe('AppRoutingModule: routes', () => {
   let router: Router;
   let location: Location;
 
-  function expectComponent(component: Type<any>): void {
+  function expectComponent(component: Type<unknown>): void {
     expect(fixture.debugElement.query(By.directive(component))).toBeTruthy();
   }
 

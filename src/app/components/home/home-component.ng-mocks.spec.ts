@@ -22,7 +22,11 @@ describe('HomeComponent with ng-mocks', () => {
     fixture.detectChanges();
 
     const counterEl = fixture.debugElement.query(By.directive(CounterComponent));
-    counter = counterEl.componentInstance;
+    counter = counterEl.componentInstance as CounterComponent;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   it('renders an independent counter', () => {

@@ -23,7 +23,7 @@ describe('NgRxCounterComponent', () => {
       providers: [provideMockStore({ initialState: mockState })],
     }).compileComponents();
 
-    store = TestBed.inject(Store);
+    store = TestBed.inject(Store) as Store<AppState>;
     spyOn(store, 'dispatch');
 
     fixture = TestBed.createComponent(NgRxCounterComponent);

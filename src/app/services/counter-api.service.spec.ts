@@ -8,7 +8,7 @@ const counter = 5;
 const expectedURL = `/assets/counter.json?counter=${counter}`;
 const serverResponse = {};
 
-const errorEvent = new ErrorEvent('API error');
+const errorEvent = new ProgressEvent('API error');
 
 describe('CounterApiService', () => {
   let counterApiService: CounterApiService;
@@ -25,7 +25,7 @@ describe('CounterApiService', () => {
   });
 
   it('saves the counter', () => {
-    let actualResult: any;
+    let actualResult: object | undefined;
     counterApiService.saveCounter(counter).subscribe((result) => {
       actualResult = result;
     });
@@ -43,13 +43,17 @@ describe('CounterApiService', () => {
 
     let actualError: HttpErrorResponse | undefined;
 
-    counterApiService.saveCounter(counter).subscribe(
-      fail,
-      (error: HttpErrorResponse) => {
+    counterApiService.saveCounter(counter).subscribe({
+      next() {
+        fail();
+      },
+      error(error: HttpErrorResponse) {
         actualError = error;
       },
-      fail,
-    );
+      complete() {
+        fail();
+      },
+    });
 
     const request = httpMock.expectOne({ method: 'GET', url: expectedURL });
     request.error(errorEvent, { status, statusText });

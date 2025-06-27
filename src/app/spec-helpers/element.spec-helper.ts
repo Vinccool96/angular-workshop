@@ -4,6 +4,14 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+interface WithTextContent {
+  textContent: string;
+}
+
+interface WithChecked {
+  checked: boolean;
+}
+
 /**
  * Spec helpers for working with the DOM
  */
@@ -30,7 +38,7 @@ export function queryByCss<T>(fixture: ComponentFixture<T>, selector: string): D
   // The return type of DebugElement#query() is declared as DebugElement,
   // but the actual return type is DebugElement | null.
   // See https://github.com/angular/angular/issues/22449.
-  const debugElement = fixture.debugElement.query(By.css(selector));
+  const debugElement = fixture.debugElement.query(By.css(selector)) as DebugElement | null;
   // Fail on null so the return type is always DebugElement.
   if (!debugElement) {
     throw new Error(`queryByCss: Element with ${selector} not found`);
@@ -67,7 +75,7 @@ export function findEls<T>(fixture: ComponentFixture<T>, testId: string): DebugE
  * @param testId Test id set by `data-testid`
  */
 export function getText<T>(fixture: ComponentFixture<T>, testId: string): string {
-  return findEl(fixture, testId).nativeElement.textContent;
+  return (findEl(fixture, testId).nativeElement as WithTextContent).textContent;
 }
 
 /**
@@ -90,7 +98,7 @@ export function expectText<T>(fixture: ComponentFixture<T>, testId: string, text
  * @param text Expected text
  */
 export function expectContainedText<T>(fixture: ComponentFixture<T>, text: string): void {
-  expect(fixture.nativeElement.textContent).toContain(text);
+  expect((fixture.nativeElement as WithTextContent).textContent).toContain(text);
 }
 
 /**
@@ -101,7 +109,7 @@ export function expectContainedText<T>(fixture: ComponentFixture<T>, text: strin
  * @param text Expected text
  */
 export function expectContent<T>(fixture: ComponentFixture<T>, text: string): void {
-  expect(fixture.nativeElement.textContent).toBe(text);
+  expect((fixture.nativeElement as WithTextContent).textContent).toBe(text);
 }
 
 /**
@@ -111,9 +119,8 @@ export function expectContent<T>(fixture: ComponentFixture<T>, text: string): vo
  * @param type Event name, e.g. `input`
  * @param bubbles Whether the event bubbles up in the DOM tree
  */
-export function dispatchFakeEvent(element: EventTarget, type: string, bubbles = false): void {
-  const event = document.createEvent('Event');
-  event.initEvent(type, bubbles, false);
+export function dispatchFakeEvent(element: EventTarget, type: 'change' | 'input', bubbles = false): void {
+  const event = new Event(type, { bubbles: bubbles, cancelable: false });
   element.dispatchEvent(event);
 }
 
@@ -134,7 +141,7 @@ export function setFieldElementValue(
   // Dispatch an `input` or `change` fake event
   // so Angular form bindings take notice of the change.
   const isSelect = element instanceof HTMLSelectElement;
-  dispatchFakeEvent(element, isSelect ? 'change' : 'input', isSelect ? false : true);
+  dispatchFakeEvent(element, isSelect ? 'change' : 'input', !isSelect);
 }
 
 /**
@@ -145,7 +152,10 @@ export function setFieldElementValue(
  * @param value Form field value
  */
 export function setFieldValue<T>(fixture: ComponentFixture<T>, testId: string, value: string): void {
-  setFieldElementValue(findEl(fixture, testId).nativeElement, value);
+  setFieldElementValue(
+    findEl(fixture, testId).nativeElement as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+    value,
+  );
 }
 
 /**
@@ -157,12 +167,13 @@ export function setFieldValue<T>(fixture: ComponentFixture<T>, testId: string, v
  * @param checked Whether the checkbox or radio should be checked
  */
 export function checkField<T>(fixture: ComponentFixture<T>, testId: string, checked: boolean): void {
-  const { nativeElement } = findEl(fixture, testId);
+  const { nativeElement } = findEl(fixture, testId) as { nativeElement: EventTarget & WithChecked };
   nativeElement.checked = checked;
   // Dispatch a `change` fake event so Angular form bindings take notice of the change.
   dispatchFakeEvent(nativeElement, 'change');
 }
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 /**
  * Makes a fake click event that provides the most important properties.
  * Sets the button to left.
@@ -183,6 +194,7 @@ export function makeClickEvent(target: EventTarget): Partial<MouseEvent> {
     button: 0,
   };
 }
+/* eslint-enable @typescript-eslint/no-empty-function */
 
 /**
  * Emulates a left click on the element with the given `data-testid` attribute.
@@ -192,7 +204,7 @@ export function makeClickEvent(target: EventTarget): Partial<MouseEvent> {
  */
 export function click<T>(fixture: ComponentFixture<T>, testId: string): void {
   const element = findEl(fixture, testId);
-  const event = makeClickEvent(element.nativeElement);
+  const event = makeClickEvent(element.nativeElement as EventTarget);
   element.triggerEventHandler('click', event);
 }
 

@@ -27,7 +27,7 @@ export class CounterEffects {
       mergeMap(([_, state]) =>
         this.counterApiService.saveCounter(state.counter).pipe(
           map(() => saveSuccess()),
-          catchError((error) => of(saveError({ error }))),
+          catchError((error: Error) => of(saveError({ error }))),
         ),
       ),
     ),

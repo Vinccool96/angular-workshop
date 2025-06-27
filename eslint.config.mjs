@@ -8,6 +8,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 export default tseslint.config(
   {
     files: ['**/*.{ts,mjs,js}'],
+    ignores:  ['eslint.config.mjs'],
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.strictTypeChecked,
@@ -33,8 +34,35 @@ export default tseslint.config(
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/no-extraneous-class': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true
+        }
+      ],
+      '@angular-eslint/prefer-standalone': 'off',
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        {
+          allowAny: false,
+          allowNever: false,
+          allowRegExp: false,
+        },
+      ],
       '@typescript-eslint/strict-boolean-expressions': ['error', { allowString: false }],
-      '@typescript-eslint/no-extraneous-class': 'off'
+    },
+  },
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/unbound-method': 'off',
     },
   },
   {

@@ -34,7 +34,11 @@ describe('HomeComponent (faking a child Component)', () => {
     fixture.detectChanges();
 
     const counterEl = fixture.debugElement.query(By.directive(FakeCounterComponent));
-    counter = counterEl.componentInstance;
+    counter = counterEl.componentInstance as FakeCounterComponent;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
   it('renders an independent counter', () => {
